@@ -1,0 +1,2 @@
+2026-02-06T07:57:41+01:00 [1] SMTP ERROR: Failed to connect to server: php_network_getaddresses: getaddrinfo for smtp.neo.space failed: nodename nor servname provided, or not known (0)
+2026-02-06T07:57:41+01:00 [2] SMTP Error: Could not connect to SMTP host. Failed to connect to server
