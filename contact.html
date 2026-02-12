@@ -74,25 +74,29 @@
         <!-- main-area -->
         <main>
             <!-- breadcrumb-area -->
- <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image: url(img/innerpage_bg_img.jpg); background-size: cover; background-position: center; position: relative;">
-    <!-- Dark teal overlay to neutralize purple -->
-    <div style="position: absolute; inset: 0; background: rgba(15, 118, 110, 0.65);"></div>
+ <!-- Contact Page Hero Banner – image + overlay, reduced top padding -->
+<section class="breadcrumb-area d-flex align-items-center justify-content-center" style="background-image: url('img/ZARECon Pattern.png'); background-size: cover; background-position: center; min-height: 60vh; position: relative; margin-top: 0; padding-top: 80px; padding-bottom: 60px;">
+    
+    <!-- Teal overlay for readability and theme consistency --><div style="position: absolute; inset: 0; background: rgba(46, 139, 87, 0.45); z-index: 1;"></div>
 
-    <!-- Rest of your original content -->
+    <!-- Keep your decorative shapes if you like them -->
     <div class="slider-shape ss-one layer" data-depth="0.10"><img src="img/doddle_6.png" alt="shape"></div>
     <div class="slider-shape ss-three layer" data-depth="0.40"><img src="img/doddle_9.png" alt="shape"></div>
     <div class="slider-shape ss-four layer" data-depth="0.60"><img src="img/doddle_7.png" alt="shape"></div>
 
-    <div class="container position-relative">  <!-- position-relative so content sits above overlay -->
+    <!-- Content on top of overlay -->
+    <div class="container position-relative" style="z-index: 2;">
         <div class="row">
             <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                 <div class="breadcrumb-wrap text-center">
                     <div class="breadcrumb-title mb-30">
-                        <h2 style="color: white;">Contact Us</h2>                                   
+                        <h2 style="color: white; font-weight: 700; font-size: 48px; margin-bottom: 15px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                            Contact Us
+                        </h2>
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="index.html" style="color: rgba(255,255,255,0.85);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.html" style="color: rgba(255,255,255,0.9);">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page" style="color: white;">Contact</li>
                         </ol>
                     </nav>
