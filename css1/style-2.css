@@ -2030,6 +2030,53 @@
 .testimonial-section-two .owl-dots .owl-dot:hover{
 	background-color: rgb(196, 168, 87);
 }
+/* Fix dropdown staying open on hover + nice spacing */
+.dropdown:hover > .dropdown-menu {
+    display: block !important;
+    margin-top: 0;
+}
+
+.dropdown-menu {
+    margin-top: 0 !important;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    padding: 10px 0;
+    min-width: 220px;
+    background: #fff;
+}
+
+.dropdown-item {
+    padding: 10px 25px !important;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #0f766e !important;
+    color: white !important;
+}
+
+/* Prevent dropdown from closing when hovering child items */
+.dropdown-menu:hover {
+    display: block !important;
+}
+
+/* Mobile: Bootstrap handles tap/open automatically */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        float: none;
+        box-shadow: none;
+        border: none;
+        background: rgba(255,255,255,0.05);
+    }
+    .dropdown-item {
+        padding: 12px 30px;
+    }
+}
 
 
 

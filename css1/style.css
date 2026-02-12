@@ -9497,3 +9497,277 @@ background-color: rgba(27, 76, 31, 0.9);
 	color:#ff0000;
 	font-weight:500;	
 }
+/* Professional dropdown styling - on-theme for ZARECON */
+.main-menu .has-sub .dropdown-menu,
+.navigation .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 220px;
+    padding: 12px 0;
+    margin: 8px 0 0;
+    font-size: 15px;
+    text-align: left;
+    list-style: none;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+}
+
+.main-menu .has-sub:hover > .dropdown-menu,
+.navigation .has-sub:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 10px 25px;
+    clear: both;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: white;
+    background-color: #0f766e;      /* your primary teal */
+    text-decoration: none;
+}
+
+/* Arrow indicator (optional - looks pro) */
+.has-sub > a::after {
+    content: "\f107";               /* Font Awesome down arrow */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 8px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Mobile: dropdown opens nicely */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        float: none;
+        box-shadow: none;
+        border: none;
+        background: rgba(255,255,255,0.05);
+    }
+    .dropdown-menu > li > a {
+        padding: 12px 30px;
+    }
+}
+/* Clean navigation spacing */
+.main-menu ul,
+#mobile-menu ul,
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-menu ul li a,
+#mobile-menu ul li a,
+.navigation li a {
+    padding: 10px 0;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.dropdown-menu {
+    min-width: 220px;
+    padding: 12px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 25px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    background: #0f766e;
+    color: white;
+}
+
+/* Mobile stacking */
+@media (max-width: 991px) {
+    .main-menu ul,
+    #mobile-menu ul {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+}
+/* Clean navigation spacing */
+.main-menu ul,
+#mobile-menu ul,
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-menu ul li a,
+#mobile-menu ul li a,
+.navigation li a {
+    padding: 10px 0;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.dropdown-menu {
+    min-width: 220px;
+    padding: 12px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 25px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    background: #0f766e;
+    color: white;
+}
+
+/* Mobile stacking */
+@media (max-width: 991px) {
+    .main-menu ul,
+    #mobile-menu ul {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+}
+/* Clean navigation spacing */
+.main-menu ul,
+#mobile-menu ul,
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-menu ul li a,
+#mobile-menu ul li a,
+.navigation li a {
+    padding: 10px 0;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.dropdown-menu {
+    min-width: 220px;
+    padding: 12px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 25px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    background: #0f766e;
+    color: white;
+}
+
+/* Mobile stacking */
+@media (max-width: 991px) {
+    .main-menu ul,
+    #mobile-menu ul {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+}
+/* Fix dropdown staying open on hover + nice spacing */
+.dropdown:hover > .dropdown-menu {
+    display: block !important;
+    margin-top: 0;
+}
+
+.dropdown-menu {
+    margin-top: 0 !important;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    padding: 10px 0;
+    min-width: 220px;
+    background: #fff;
+}
+
+.dropdown-item {
+    padding: 10px 25px !important;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #0f766e !important;
+    color: white !important;
+}
+
+/* Prevent dropdown from closing when hovering child items */
+.dropdown-menu:hover {
+    display: block !important;
+}
+
+/* Mobile: Bootstrap handles tap/open automatically */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        float: none;
+        box-shadow: none;
+        border: none;
+        background: rgba(255,255,255,0.05);
+    }
+    .dropdown-item {
+        padding: 12px 30px;
+    }
+}
