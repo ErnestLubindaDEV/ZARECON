@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $institution = trim($_POST['institution']);
 
     // Basic validation
-    if (empty($full_name) || empty($email) || empty($password) || empty($institution)) {
+    if (empty($full_name) || empty($email) || empty($_POST['password']) || empty($institution)) {
         $message = "All fields are required. Please fill everything out.";
         $message_class = "alert-danger";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -46,13 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssss", $full_name, $email, $password, $institution);
 
             if ($stmt->execute()) {
-                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now log in or continue exploring. We'll send you a confirmation email shortly.";
+                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now <a href='login.php' style='color:#0f766e; font-weight:600;'>log in here</a> or continue exploring.";
                 $message_class = "alert-success";
             } else {
-                $message = "Something went wrong. Please try again or contact support.";
+                $message = "Something went wrong: " . $stmt->error . ". Please try again or contact support.";
                 $message_class = "alert-danger";
             }
         }
+        $check_stmt->close();
     }
 }
 
@@ -66,18 +67,62 @@ $conn->close();
     <title>Registration - ZARECON 2026</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Your CSS links (copy from index or about) -->
+    <!-- Your CSS links -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- Add others as needed -->
 
     <style>
-        .registration-form { max-width: 500px; margin: 50px auto; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
-        .alert { padding: 15px; margin-bottom: 25px; border-radius: 8px; font-size: 16px; }
-        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .btn-submit { background: #0f766e; color: white; border: none; padding: 14px; width: 100%; border-radius: 50px; font-size: 18px; font-weight: 600; }
-        .form-group { margin-bottom: 25px; }
+        .registration-form {
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .btn-submit {
+            background: #0f766e;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background: #0c5c56;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-control:focus {
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 0.25rem rgba(20,184,166,0.25);
+        }
+        .text-center a {
+            color: #0f766e;
+            font-weight: 600;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -100,11 +145,13 @@ $conn->close();
                 <form method="POST" action="registration.php">
                     <div class="form-group">
                         <label for="full_name">Full Name</label>
-                        <input type="text" id="full_name" name="full_name" class="form-control" required value="<?php echo isset($_POST['full_name']) ? htmlspecialchars($_POST['full_name']) : ''; ?>">
+                        <input type="text" id="full_name" name="full_name" class="form-control" required 
+                               value="<?php echo isset($_POST['full_name']) ? htmlspecialchars($_POST['full_name']) : ''; ?>">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                        <input type="email" id="email" name="email" class="form-control" required 
+                               value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -112,13 +159,15 @@ $conn->close();
                     </div>
                     <div class="form-group">
                         <label for="institution">Institution / Organization</label>
-                        <input type="text" id="institution" name="institution" class="form-control" required value="<?php echo isset($_POST['institution']) ? htmlspecialchars($_POST['institution']) : ''; ?>">
+                        <input type="text" id="institution" name="institution" class="form-control" required 
+                               value="<?php echo isset($_POST['institution']) ? htmlspecialchars($_POST['institution']) : ''; ?>">
                     </div>
                     <button type="submit" class="btn-submit">Complete Registration</button>
                 </form>
 
-                <p class="text-center mt-4" style="font-size: 15px;">
-                    Already registered? <a href="#" style="color: #0f766e;">Log in here</a>
+                <p class="text-center mt-4" style="font-size: 16px;">
+                    Already have an account? 
+                    <a href="login.php">Login here</a>
                 </p>
             </div>
         </div>
