@@ -16,19 +16,29 @@ $message = "";
 $message_class = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name = trim($_POST['full_name']);
-    $email = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $institution = trim($_POST['institution']);
+    $full_name   = trim($_POST['full_name'] ?? '');
+    $email       = trim($_POST['email'] ?? '');
+    $institution = trim($_POST['institution'] ?? '');
+    $password    = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
 
     // Basic validation
-    if (empty($full_name) || empty($email) || empty($_POST['password']) || empty($institution)) {
+    if (empty($full_name) || empty($email) || empty($password) || empty($confirm_password) || empty($institution)) {
         $message = "All fields are required. Please fill everything out.";
         $message_class = "alert-danger";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = "Please enter a valid email address.";
         $message_class = "alert-danger";
+    } elseif ($password !== $confirm_password) {
+        $message = "Passwords do not match. Please confirm your password.";
+        $message_class = "alert-danger";
+    } elseif (strlen($password) < 8) {
+        $message = "Password must be at least 8 characters long.";
+        $message_class = "alert-danger";
     } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
         // Check if email already exists
         $check_sql = "SELECT email FROM users WHERE email = ?";
         $check_stmt = $conn->prepare($check_sql);
@@ -43,13 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Insert new user
             $sql = "INSERT INTO users (full_name, email, password, institution) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssss", $full_name, $email, $password, $institution);
+            $stmt->bind_param("ssss", $full_name, $email, $hashed_password, $institution);
 
             if ($stmt->execute()) {
-                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now <a href='login.php' style='color:#0f766e; font-weight:600;'>log in here</a> or continue exploring.";
+                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now <a href='login.php' style='color:#0f766e; font-weight:600;'>log in here</a>.";
                 $message_class = "alert-success";
             } else {
-                $message = "Something went wrong: " . $stmt->error . ". Please try again or contact support.";
+                $message = "Something went wrong: " . $stmt->error . ". Please try again.";
                 $message_class = "alert-danger";
             }
         }
@@ -67,7 +77,6 @@ $conn->close();
     <title>Registration - ZARECON 2026</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Your CSS links -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -86,16 +95,8 @@ $conn->close();
             border-radius: 8px;
             font-size: 16px;
         }
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .alert-danger {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-danger  { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .btn-submit {
             background: #0f766e;
             color: white;
@@ -108,21 +109,13 @@ $conn->close();
             cursor: pointer;
             transition: background 0.3s;
         }
-        .btn-submit:hover {
-            background: #0c5c56;
-        }
-        .form-group {
-            margin-bottom: 25px;
-        }
+        .btn-submit:hover { background: #0c5c56; }
+        .form-group { margin-bottom: 25px; }
         .form-control:focus {
             border-color: #14b8a6;
             box-shadow: 0 0 0 0.25rem rgba(20,184,166,0.25);
         }
-        .text-center a {
-            color: #0f766e;
-            font-weight: 600;
-            text-decoration: underline;
-        }
+        .text-center a { color: #0f766e; font-weight: 600; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -156,6 +149,10 @@ $conn->close();
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="institution">Institution / Organization</label>
