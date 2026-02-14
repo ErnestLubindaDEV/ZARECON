@@ -5261,7 +5261,7 @@ top: -3px;
 }
 .sidebar-widget .widget li.page_item_has_children,
  {
-    padding-bottom: 0;
+    padding-bottom: 10px;
 }
 .sidebar-widget .widget .children{
 	padding-left:15px;
@@ -6036,3 +6036,4 @@ pre cite {
         padding: 12px 30px;
     }
 }
+
