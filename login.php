@@ -1,3 +1,8 @@
+<?php 
+$page_title = "Registration - ZARECON 2026";  // Change this per page
+include 'header.php'; 
+?>
+
 <?php
 session_start();
 
@@ -126,7 +131,7 @@ $conn->close();
         </div>
     </section>
 
-    <!-- Your footer code here -->
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>

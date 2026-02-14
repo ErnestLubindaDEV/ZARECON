@@ -1,3 +1,8 @@
+<?php 
+$page_title = "Registration - ZARECON 2026";  // Change this per page
+include 'header.php'; 
+?>
+
 <?php
 // Database connection
 $servername = "localhost";
@@ -113,7 +118,112 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Your header (copy from other pages) -->
+     <!-- Main Header-->
+    <header class="main-header header-style-one">
+    	
+    	<!--Header-Upper-->
+        <div class="header-upper">
+        	<div class="outer-container">
+            	<div class="clearfix">
+                	
+                	<div class="pull-left logo-box">
+                    	<div class="logo"><a href="index.html"><img src="images1/logo.png" alt="" title=""></a></div>
+                    </div>
+                   	
+					<div class="nav-outer clearfix">
+                    
+						<!--Mobile Navigation Toggler For Mobile-->
+                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<div class="navbar-header">
+								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+
+							<div class="navbar-collapse collapse scroll-nav clearfix" id="navbarSupportedContent">
+                                <ul style="display: flex; flex-direction: row; align-items: center; gap: 32px; margin: 0; padding: 0; justify-content: center; list-style: none;">
+    <li><a href="index.html" style="padding: 10px 0; font-weight: 500; transition: color 0.3s;">Home</a></li>
+    
+    <li><a href="about.html" style="padding: 10px 0; font-weight: 500; transition: color 0.3s;">About</a></li>
+    
+    <li><a href="#" style="padding: 10px 0; font-weight: 500; transition: color 0.3s;">ZARENA Membership</a></li>
+    
+    <li class="has-sub dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 10px 0; font-weight: 500; transition: color 0.3s;">
+            Registration <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" style="min-width: 220px; padding: 12px 0; margin-top: 10px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); background: #fff; border: 1px solid rgba(0,0,0,0.1);">
+            <li><a href="paper-registration.php" style="display: block; padding: 10px 25px; color: #333; transition: all 0.3s;">Paper Registration</a></li>
+            <li><a href="#" style="display: block; padding: 10px 25px; color: #333; transition: all 0.3s;">Delegate Registration</a></li>
+            <li><a href="#" style="display: block; padding: 10px 25px; color: #333; transition: all 0.3s;">Sponsor Registration</a></li>
+        </ul>
+    </li>
+    
+    <li><a href="contact.html" style="padding: 10px 0; font-weight: 500; transition: color 0.3s;">Contact</a></li>
+</ul>
+							</div>
+							
+						</nav>
+						<!-- Main Menu End-->
+						
+						<!-- Outer Box -->
+						<div class="outer-box">
+					
+                           <div class="col-xl-3 text-right d-none d-xl-block">
+                                <div class="header-btn second-header-btn">
+                                     <a href="registration.php" class="btn"><i class="far fa-ticket-alt"></i>Register</a>
+                                </div>
+						</div>
+						
+					</div>
+					
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+        
+		<!--Sticky Header-->
+        <div class="sticky-header">
+        	<div class="auto-container clearfix">
+            	<!--Logo-->
+            	<div class="logo pull-left">
+                	<a href="index.html" class="img-responsive"><img src="images1/logo.png" alt="" title=""></a>
+                </div>
+                
+				<!--Right Col-->
+                <div class="right-col pull-right">
+					<!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md">
+                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                            <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
+                        </div>
+                    </nav><!-- Main Menu End-->
+                </div>
+                
+            </div>
+        </div>
+        <!--End Sticky Header-->
+		
+		<!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
+            
+            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+            <nav class="menu-box">
+            	<div class="nav-logo"><a href="index.html"><img src="images1/logo.png" alt="" title=""></a></div>
+                
+                <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
+            </nav>
+        </div><!-- End Mobile Menu -->
+
+    </header>
+    <!-- End Main Header -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -203,7 +313,7 @@ $conn->close();
         </div>
     </section>
 
-    <!-- Your footer -->
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>
