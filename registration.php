@@ -1,12 +1,4 @@
-<?php 
-$page_title = "Registration - ZARECON 2026";  // Change this per page
-include 'header.php'; 
-?>
-
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -24,29 +16,19 @@ $message = "";
 $message_class = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name   = trim($_POST['full_name'] ?? '');
-    $email       = trim($_POST['email'] ?? '');
-    $institution = trim($_POST['institution'] ?? '');
-    $password    = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
+    $full_name = trim($_POST['full_name']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $institution = trim($_POST['institution']);
 
     // Basic validation
-    if (empty($full_name) || empty($email) || empty($password) || empty($confirm_password) || empty($institution)) {
+    if (empty($full_name) || empty($email) || empty($_POST['password']) || empty($institution)) {
         $message = "All fields are required. Please fill everything out.";
         $message_class = "alert-danger";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message = "Please enter a valid email address.";
         $message_class = "alert-danger";
-    } elseif ($password !== $confirm_password) {
-        $message = "Passwords do not match. Please confirm your password.";
-        $message_class = "alert-danger";
-    } elseif (strlen($password) < 8) {
-        $message = "Password must be at least 8 characters long.";
-        $message_class = "alert-danger";
     } else {
-        // Hash the password
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
         // Check if email already exists
         $check_sql = "SELECT email FROM users WHERE email = ?";
         $check_stmt = $conn->prepare($check_sql);
@@ -61,13 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Insert new user
             $sql = "INSERT INTO users (full_name, email, password, institution) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssss", $full_name, $email, $hashed_password, $institution);
+            $stmt->bind_param("ssss", $full_name, $email, $password, $institution);
 
             if ($stmt->execute()) {
-                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now <a href='login.php' style='color:#0f766e; font-weight:600;'>log in here</a>.";
+                $message = "<strong>Registration successful!</strong> Welcome to ZARECON 2026!<br>You can now <a href='login.php' style='color:#0f766e; font-weight:600;'>log in here</a> or continue exploring.";
                 $message_class = "alert-success";
             } else {
-                $message = "Something went wrong: " . $stmt->error . ". Please try again.";
+                $message = "Something went wrong: " . $stmt->error . ". Please try again or contact support.";
                 $message_class = "alert-danger";
             }
         }
@@ -128,7 +110,7 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Your header here -->
+    <!-- Your header here (include or paste once only) -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -142,7 +124,7 @@ $conn->close();
                     </div>
                 <?php endif; ?>
 
-                <!-- Form -->
+                <!-- Form (only one submit button) -->
                 <form method="POST" action="registration.php">
                     <div class="form-group">
                         <label for="full_name">Full Name</label>
@@ -159,14 +141,11 @@ $conn->close();
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
-                    </div>
-                    <div class="form-group">
                         <label for="institution">Institution / Organization</label>
                         <input type="text" id="institution" name="institution" class="form-control" required 
                                value="<?php echo isset($_POST['institution']) ? htmlspecialchars($_POST['institution']) : ''; ?>">
                     </div>
+
                     <button type="submit" class="btn-submit">Complete Registration</button>
                 </form>
 
@@ -178,7 +157,7 @@ $conn->close();
         </div>
     </section>
 
-  <?php include 'footer.php'; ?>
+    <!-- Your footer here -->
 
 </body>
 </html>
