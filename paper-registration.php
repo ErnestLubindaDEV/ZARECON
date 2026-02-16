@@ -1,13 +1,13 @@
 <?php 
-$page_title = "Registration - ZARECON 2026";  // Change this per page
-include 'header.php'; 
+$page_title = "Paper Registration - ZARECON 2026";
+include 'header.php';  // ← Loads nav with ONLY Login button
 ?>
 
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -149,7 +149,7 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Your header (copy from index or about) -->
+    <!-- Navigation is loaded ONLY from header.php – now with Login button only -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -245,8 +245,7 @@ $conn->close();
         </div>
     </section>
 
-   <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>
-

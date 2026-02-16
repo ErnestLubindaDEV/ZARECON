@@ -1,6 +1,6 @@
 <?php 
-$page_title = "Registration - ZARECON 2026";  // Change this per page
-include 'header.php'; 
+$page_title = "Sponsor Registration - ZARECON 2026";
+include 'header.php';  // ← This loads the nav with ONLY Login button
 ?>
 
 <?php
@@ -107,7 +107,7 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Your header -->
+    <!-- Navigation is loaded ONLY from header.php – now with Login button only -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -120,41 +120,41 @@ $conn->close();
                     </div>
                 <?php endif; ?>
 
- <!-- Sponsorship Packages Table -->
-<div class="package-table table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Package</th>
-                <th>Benefits</th>
-                <th>Price (ZMW)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="package-name">Platinum</td>
-                <td>Keynote slot, premium booth, logo on all materials, 6 free delegates, full-page ad</td>
-                <td class="price">150,000</td>
-            </tr>
-            <tr>
-                <td class="package-name">Gold</td>
-                <td>Panel participation, standard booth, logo on website & program, 4 free delegates</td>
-                <td class="price">100,000</td>
-            </tr>
-            <tr>
-                <td class="package-name">Silver</td>
-                <td>Logo on website & program, 2 free delegates, exhibit space</td>
-                <td class="price">50,000</td>
-            </tr>
-            <tr>
-                <td class="package-name">Bronze</td>
-                <td>Logo on website, 1 free delegate</td>
-                <td class="price">25,000</td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="text-muted small text-center mt-2">Prices are in Zambian Kwacha (ZMW) – final quote provided upon review.</p>
-</div>
+                <!-- Sponsorship Packages Table -->
+                <div class="package-table table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Package</th>
+                                <th>Benefits</th>
+                                <th>Price (ZMW)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="package-name">Platinum</td>
+                                <td>Keynote slot, premium booth, logo on all materials, 6 free delegates, full-page ad</td>
+                                <td class="price">150,000</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Gold</td>
+                                <td>Panel participation, standard booth, logo on website & program, 4 free delegates</td>
+                                <td class="price">100,000</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Silver</td>
+                                <td>Logo on website & program, 2 free delegates, exhibit space</td>
+                                <td class="price">50,000</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Bronze</td>
+                                <td>Logo on website, 1 free delegate</td>
+                                <td class="price">25,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-muted small text-center mt-2">Prices are in Zambian Kwacha (ZMW) – final quote provided upon review.</p>
+                </div>
 
                 <form method="POST" action="sponsor-registration.php" enctype="multipart/form-data">
                     <!-- Company Information -->
@@ -185,10 +185,10 @@ $conn->close();
                     <div class="form-group">
                         <select id="package" name="package" class="form-control" required>
                             <option value="" disabled selected>Select package</option>
-                            <option value="Platinum">Platinum ($15,000)</option>
-                            <option value="Gold">Gold ($10,000)</option>
-                            <option value="Silver">Silver ($5,000)</option>
-                            <option value="Bronze">Bronze ($2,500)</option>
+                            <option value="Platinum">Platinum (150,000 ZMW)</option>
+                            <option value="Gold">Gold (100,000 ZMW)</option>
+                            <option value="Silver">Silver (50,000 ZMW)</option>
+                            <option value="Bronze">Bronze (25,000 ZMW)</option>
                             <option value="Other">Other (please specify below)</option>
                         </select>
                     </div>
@@ -209,8 +209,8 @@ $conn->close();
                     </div>
 
                     <p class="text-muted small text-center mt-3">
-                          For international sponsors: Approximate USD equivalent based on current rates (subject to change). Contact us for exact invoicing.
-                   </p>
+                        For international sponsors: Approximate USD equivalent based on current rates (subject to change). Contact us for exact invoicing.
+                    </p>
 
                     <!-- Agreement -->
                     <div class="form-group form-check mt-4">
@@ -230,7 +230,7 @@ $conn->close();
         </div>
     </section>
 
-   <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>

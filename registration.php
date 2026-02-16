@@ -1,3 +1,8 @@
+<?php 
+$page_title = "Registration - ZARECON 2026";
+include 'header.php';  // ← Loads nav with ONLY Login button
+?>
+
 <?php
 // Database connection
 $servername = "localhost";
@@ -110,7 +115,7 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Your header here (include or paste once only) -->
+    <!-- Navigation is loaded ONLY from header.php – now with Login button only -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -124,7 +129,7 @@ $conn->close();
                     </div>
                 <?php endif; ?>
 
-                <!-- Form (only one submit button) -->
+                <!-- Form -->
                 <form method="POST" action="registration.php">
                     <div class="form-group">
                         <label for="full_name">Full Name</label>
@@ -157,7 +162,7 @@ $conn->close();
         </div>
     </section>
 
-    <!-- Your footer here -->
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>

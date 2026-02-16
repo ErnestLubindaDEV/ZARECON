@@ -9823,3 +9823,10 @@ background-color: rgba(27, 76, 31, 0.9);
         background: rgba(244, 162, 97, 0.95) !important;
     }
 }
+
+.header-btn .btn {
+    margin-right: 15px !important;  /* Adds space between Login and Register */
+}
+.header-btn .btn:last-child {
+    margin-right: 0 !important;
+}

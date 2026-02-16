@@ -1,6 +1,6 @@
-<?php
+<?php 
 $page_title = "Delegate Registration - ZARECON 2026";
-include 'header.php';  // ← This is the ONLY header include – keeps one logo and one nav
+include 'header.php'; 
 ?>
 
 <?php
@@ -118,7 +118,7 @@ $conn->close();
 </head>
 <body>
 
-    <!-- Navigation is loaded ONLY from header.php – no duplicates here -->
+    <!-- Navigation is loaded ONLY from header.php (single logo, single nav, only Login button) -->
 
     <section class="registration-section py-5">
         <div class="container">
@@ -208,7 +208,7 @@ $conn->close();
         </div>
     </section>
 
-    <?php include 'footer.php'; ?>  <!-- If you have a separate footer file -->
+    <?php include 'footer.php'; ?>
 
 </body>
 </html>
