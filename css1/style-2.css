@@ -2078,6 +2078,57 @@
     }
 }
 
+/* Subtle orange tint for navigation */
+#header-sticky.menu-area {
+    background: linear-gradient(to right, rgba(244, 162, 97, 0.92), rgba(240, 140, 111, 0.92)) !important;
+    backdrop-filter: blur(8px);
+    transition: background 0.3s ease;
+}
+
+/* Menu item hover & active */
+.main-menu ul li a,
+#mobile-menu ul li a,
+.navigation li a {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.main-menu ul li:hover > a,
+#mobile-menu ul li:hover > a,
+.navigation li:hover > a,
+.main-menu ul li.active > a {
+    color: #f4a261 !important; /* orange accent on hover/active */
+}
+
+/* Dropdown styling with orange touch */
+.dropdown-menu {
+    background: #ffffff !important;
+    border: 1px solid rgba(244, 162, 97, 0.3) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: #f4a261 !important;
+    color: white !important;
+}
+
+/* Register/Login buttons – orange accent */
+.header-btn .btn {
+    background: #f4a261 !important;
+    border-color: #f4a261 !important;
+    color: white !important;
+}
+
+.header-btn .btn:hover {
+    background: #e07a5f !important; /* slightly darker on hover */
+}
+
+/* Mobile responsive menu background */
+@media (max-width: 991px) {
+    .responsive-menu {
+        background: rgba(244, 162, 97, 0.95) !important;
+    }
+}
 
 
 
